@@ -44,13 +44,14 @@ module.exports = function(app) {
 
   	tvshow.save(function(err) {
   		if(!err) {
+        res.send(tvshow);
   			console.log('Created');
-  		} else {
-  			console.log('ERROR: ' + err);
-  		}
-  	});
+      } else {
+        res.status(400).json({ error: err })
+        console.log('ERROR: ' + err);
+      }
+    });
 
-  	res.send(tvshow);
   };
 
   //PUT - Update a register already exists

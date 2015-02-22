@@ -22,6 +22,17 @@ angular.module('testAngularApp')
       });
     };
 
+    TvFactory.addShows = function(show){
+      $http.post(
+        ENV.apiEndpoint + '/tvshow',
+        show
+      ).success(function(data) {
+        console.log(data);
+      }).error(function(data){
+        console.log(data);
+      });
+    };
+
     // Return factory
     return TvFactory;
 

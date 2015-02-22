@@ -14,10 +14,25 @@ angular.module('testAngularApp')
       'AngularJS',
       'Karma'
     ];
-	$scope.tv = TvFactory;
+  
+  $scope.tv = TvFactory;
+  $scope.getShowsBox = false;
+	$scope.addShowsBox = false;
 
 	$scope.getShows = function(){
-		return $scope.tv.getShows();
+    $scope.addShowsBox = false;
+    $scope.getShowsBox = true;
+    return $scope.tv.getShows();
+  }
+
+  $scope.addShows = function(){
+    $scope.getShowsBox = false;
+    $scope.addShowsBox = true;
 	}
+
+  $scope.submit = function(show){
+    console.log(show)
+    //return $scope.tv.addShows(show);
+  }
 
   });
