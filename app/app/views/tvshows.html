@@ -1,0 +1,11 @@
+<p>This is the tv shows view.</p>
+<p><button type="button" class="btn btn-lg btn-success" ng-click="getShows()">Get Tv Shows <span class="glyphicon glyphicon-film"></span></button></p>
+<div ng-repeat="item in tv.data">
+	<h1>{{ item.title }}</h1>
+	<img ng-src="{{ item.poster }}" alt="{{ item.title }}" />
+	<p>Year: {{ item.year }}</p>
+	<p>Country: {{ item.country }}</p>
+	<p>Seasons: {{ item.seasons }}</p>
+	<p>Genre: {{ item.genre }}</p>
+	<p>" {{ item.summary }} "</p>
+</div>
