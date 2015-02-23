@@ -7,9 +7,10 @@ module.exports = function(app) {
   findAllTVShows = function(req, res) {
   	TVShow.find(function(err, tvshows) {
   		if(!err) {
+        res.send(tvshows);
         console.log('GET /tvshows')
-  			res.send(tvshows);
   		} else {
+        res.status(400).json({ error: err })
   			console.log('ERROR: ' + err);
   		}
   	});
@@ -22,6 +23,7 @@ module.exports = function(app) {
         console.log('GET /tvshow/' + req.params.id);
   			res.send(tvshow);
   		} else {
+        res.status(400).json({ error: err })
   			console.log('ERROR: ' + err);
   		}
   	});
@@ -67,8 +69,10 @@ module.exports = function(app) {
 
   		tvshow.save(function(err) {
   			if(!err) {
+          res.status(200).json({ status: 'updated' })
   				console.log('Updated');
   			} else {
+          res.status(400).json({ error: err })
   				console.log('ERROR: ' + err);
   			}
   			res.send(tvshow);
@@ -81,8 +85,10 @@ module.exports = function(app) {
   	TVShow.findById(req.params.id, function(err, tvshow) {
   		tvshow.remove(function(err) {
   			if(!err) {
+          res.status(200).json({ status: 'deleted' })
   				console.log('Removed');
   			} else {
+          res.status(400).json({ error: err })
   				console.log('ERROR: ' + err);
   			}
   		})

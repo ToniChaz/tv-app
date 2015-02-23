@@ -15,24 +15,30 @@ angular.module('testAngularApp')
       'Karma'
     ];
   
-  $scope.tv = TvFactory;
-  $scope.getShowsBox = false;
-	$scope.addShowsBox = false;
-
-	$scope.getShows = function(){
-    $scope.addShowsBox = false;
-    $scope.getShowsBox = true;
-    return $scope.tv.getShows();
-  }
-
-  $scope.addShows = function(){
+    $scope.tv = TvFactory;
     $scope.getShowsBox = false;
-    $scope.addShowsBox = true;
-	}
+  	$scope.addShowsBox = false;
 
-  $scope.submit = function(show){
-    console.log(show)
-    //return $scope.tv.addShows(show);
-  }
+  	$scope.getShows = function(){
+      $scope.addShowsBox = false;
+      $scope.getShowsBox = true;
+      return $scope.tv.getShows();
+    }
+
+    $scope.deleteShow = function(id, index){      
+      $scope.tv.deleteShow(id, function(){
+        TvFactory.data.splice(index, 1);
+      });
+    }
+
+    $scope.addShows = function(){
+      $scope.getShowsBox = false;
+      $scope.addShowsBox = true;
+  	}
+
+    $scope.submit = function(show){
+      $scope.tv.addShows(show);
+      $scope.show = null
+    }
 
   });

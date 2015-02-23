@@ -390,7 +390,7 @@ module.exports = function (grunt) {
     },
 
     // Test cucumber
-    cucumber: {
+    cucumberjs: {
       src: 'test/features',
       options: {
         steps: "test/features/step_definitions"
@@ -439,7 +439,7 @@ module.exports = function (grunt) {
     'autoprefixer',
     'connect:test',
     'karma',
-    'cucumber'
+    'cucumberjs'
   ]);
 
   grunt.registerTask('build', [

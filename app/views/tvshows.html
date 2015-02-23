@@ -2,6 +2,7 @@
 <p><button type="button" class="btn btn-lg btn-success" ng-click="getShows()">Get Tv Shows <span class="glyphicon glyphicon-film"></span></button></p>
 <p><button type="button" class="btn btn-lg btn-primary" ng-click="addShows()">Add Tv Show <span class="glyphicon glyphicon-film"></span></button></p>
 <div ng-show="getShowsBox" ng-repeat="item in tv.data">
+	<button type="button" class="btn btn-small btn-danger pull-right" ng-click="deleteShow(item._id, $index)">Delete <span class="glyphicon glyphicon-bin"></span></button>
 	<h1>{{ item.title }}</h1>
 	<img ng-src="{{ item.poster }}" alt="{{ item.title }}" />
 	<p>Year: {{ item.year }}</p>

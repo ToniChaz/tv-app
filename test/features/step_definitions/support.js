@@ -22,7 +22,7 @@ Support.prototype.isElementPresent = function(sut, find, callback){
 };
 
 Support.prototype.isElementPresentByClass = function(sut, find, callback){
-  sut.browser.isElementPresent(sut.by.css('.'+find)).then(function(result) {
+  sut.browser.isElementPresent(sut.by.css(find)).then(function(result) {
      callback(result)
   });
 };

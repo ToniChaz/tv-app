@@ -33,6 +33,16 @@ angular.module('testAngularApp')
       });
     };
 
+    TvFactory.deleteShow = function(id, callback){
+      $http.delete(
+        ENV.apiEndpoint + '/tvshow/' + id
+      ).success(function(data) {
+        callback();
+      }).error(function(data){
+        console.log(data);
+      });
+    };
+
     // Return factory
     return TvFactory;
 

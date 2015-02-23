@@ -14,6 +14,8 @@ describe('Service: TvFactory', function () {
 
   it('should have an getShows function', function () {    
     expect(angular.isFunction(TvFactory.getShows)).toBe(true);
+    expect(angular.isFunction(TvFactory.addShows)).toBe(true);
+    expect(angular.isFunction(TvFactory.deleteShow)).toBe(true);
   });
 
 });
