@@ -344,6 +344,17 @@ module.exports = function (grunt) {
           }
         }
       },
+      testing: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'testing',
+            apiEndpoint: 'http://localhost:8882'
+          }
+        }
+      },
       production: {
         options: {
           dest: '<%= yeoman.dist %>/scripts/config.js'
@@ -405,6 +416,20 @@ module.exports = function (grunt) {
           script: 'api/app.js'
         }
       }
+    },
+
+    // Stubby configuration
+    stubby: {
+      mockServer: {
+        options: {
+          stubs: 8882,
+          tls: 7443,
+          admin: 8889
+        },
+        files: [{
+          src: [ 'test/stubs/*.{json,yaml,js}' ]
+        }]
+      }
     }
 
   });
@@ -412,6 +437,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-cucumber');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-selenium-webdriver');
+  grunt.loadNpmTasks('grunt-stubby');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -438,6 +464,8 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'selenium_start',
     'clean:server',
+    'ngconstant:testing',
+    'stubby',
     'concurrent:test',
     'autoprefixer',
     'connect:test',

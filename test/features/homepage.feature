@@ -3,7 +3,11 @@ Feature: Running Cucumber with Protractor
   I should be able to use Cucumber
   to run my E2E tests
 
-  Scenario: Wrapping WebDriver
-    Given I go on "index.html"
+  Scenario: Loading homepage
+    Given I go on "index"
     Then the title should equal "Angular Grunt Karma Protractor"
     And the menu should contain "Home"
+
+  Scenario: Loading tv shows
+  	Given I go on "tvshows"
+  	Then click the button "getShows"
