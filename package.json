@@ -1,13 +1,14 @@
 {
   "name": "testangular",
   "version": "0.0.0",
-  "dependencies": {
-    "express": "3.2.6",
-    "mongoose": "3.6.11",
-    "cors": "2.5.3"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.5",
+    "cors": "2.5.3",
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
+    "cucumber": "^0.4.2",
+    "express": "3.2.6",
+    "grunt": "^0.4.5",
     "grunt-autoprefixer": "^0.7.3",
     "grunt-concurrent": "^0.5.0",
     "grunt-contrib-clean": "^0.5.0",
@@ -27,19 +28,20 @@
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.1.1",
     "grunt-wiredep": "^1.7.0",
-    "jshint-stylish": "^0.2.0",
-    "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.3.1",
+    "grunt-selenium-webdriver": "^0.2.422",
     "grunt-protractor-runner": "~1.2.1",
-    "protractor": "~1.6.1",
     "grunt-karma": "~0.10.1",
     "grunt-ng-constant": "~1.1.0",
-    "protractor-cucumber": "~0.1.4",
     "grunt-cucumber": "~0.2.3",
     "grunt-express-server": "~0.4.19",
-    "karma-phantomjs-launcher": "~0.1.4",
+    "jshint-stylish": "^0.2.0",
     "jasmine-core": "~2.2.0",
-    "karma-jasmine": "~0.3.5"
+    "karma-jasmine": "~0.3.5",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "load-grunt-tasks": "^0.4.0",
+    "mongoose": "3.6.11",
+    "protractor": "~1.6.1",
+    "time-grunt": "^0.3.1"
   },
   "engines": {
     "node": ">=0.10.0"

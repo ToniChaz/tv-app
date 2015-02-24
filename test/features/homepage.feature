@@ -1,7 +1,9 @@
-Feature: Homepage 
-  I want to visit the homepage
-  So that I can access the various features
+Feature: Running Cucumber with Protractor
+  As a user of Protractor
+  I should be able to use Cucumber
+  to run my E2E tests
 
-  Scenario: Visit Homepage
-    Given I am on the homepage
-    Then I should see a "nav"
+  Scenario: Wrapping WebDriver
+    Given I go on "index.html"
+    Then the title should equal "Angular Grunt Karma Protractor"
+    And the menu should contain "Home"

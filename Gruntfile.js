@@ -380,21 +380,22 @@ module.exports = function (grunt) {
       }
     },
     
-    // Test Protractor
+    // Test protractor cucumber
     protractor: {
       options: {
-        keepAlive: true,
-	      configFile: 'protractor.js'
+        configFile: "node_modules/protractor/referenceConf.js", // Default config file
+        keepAlive: true, // If false, the grunt process stops when the test fails.
+        noColor: false, // If true, protractor will not use colors in its output.
+        args: {
+          // Arguments passed to the command
+        }
       },
-      run: {}
-    },
-
-    // Test cucumber
-    cucumberjs: {
-      src: 'test/features',
-      options: {
-        steps: "test/features/step_definitions"
-      }
+      my_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
+        options: {
+          configFile: "protractor-conf.js", // Target-specific config file
+          args: {} // Target-specific arguments
+        }
+      },
     },
 
     // Run api server
@@ -410,6 +411,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-cucumber');
   grunt.loadNpmTasks('grunt-express-server');
+  grunt.loadNpmTasks('grunt-selenium-webdriver');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -434,12 +436,14 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
+    'selenium_start',
     'clean:server',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
     'karma',
-    'cucumberjs'
+    'protractor',
+    'selenium_stop'
   ]);
 
   grunt.registerTask('build', [
