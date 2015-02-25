@@ -9,37 +9,43 @@
  */
 angular.module('testAngularApp')
   .factory('TvFactory', function ($http, ENV) {
-    
-    var TvFactory = {};
 
-    TvFactory.getShows = function(){
+      var TvFactory = {};
+
+      TvFactory.getShows = function () {
       $http.get(
         ENV.apiEndpoint + '/tvshows'
-      ).success(function(data) {
+      ).success(function(data, status, headers, config) {
         TvFactory.data = data;
-      }).error(function(data){
-        console.log(data);
+        TvFactory.status = status;
+        TvFactory.headers = headers;
+        TvFactory.config = config;
+      }).error(function(data, status, headers, config){
+        TvFactory.data = data;
+        TvFactory.status = status;
+        TvFactory.headers = headers;
+        TvFactory.config = config;
       });
     };
 
-    TvFactory.addShows = function(show){
+    TvFactory.addShows = function (show) {
       $http.post(
         ENV.apiEndpoint + '/tvshow',
         show
-      ).success(function(data) {
-        console.log(data);
-      }).error(function(data){
-        console.log(data);
+      ).success(function (data, status, headers, config) {
+        console.log(data, status, headers, config);
+      }).error(function (data, status, headers, config) {
+        console.log(data, status, headers, config);
       });
     };
 
-    TvFactory.deleteShow = function(id, callback){
+    TvFactory.deleteShow = function (id, callback) {
       $http.delete(
         ENV.apiEndpoint + '/tvshow/' + id
-      ).success(function(data) {
+      ).success(function (data, status, headers, config) {
         callback();
-      }).error(function(data){
-        console.log(data);
+      }).error(function (data, status, headers, config) {
+        console.log(data, status, headers, config);
       });
     };
 

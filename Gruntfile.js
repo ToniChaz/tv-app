@@ -420,7 +420,7 @@ module.exports = function (grunt) {
 
     // Stubby configuration
     stubby: {
-      mockServer: {
+      stubsServer: {
         options: {
           stubs: 8882,
           tls: 7443,
@@ -465,11 +465,11 @@ module.exports = function (grunt) {
     'selenium_start',
     'clean:server',
     'ngconstant:testing',
-    'stubby',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
     'karma',
+    //'stubby',
     'protractor',
     'selenium_stop'
   ]);
