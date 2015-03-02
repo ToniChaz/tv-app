@@ -17,14 +17,8 @@ angular.module('testAngularApp')
         ENV.apiEndpoint + '/tvshows'
       ).success(function(data, status, headers, config) {
         TvFactory.data = data;
-        TvFactory.status = status;
-        TvFactory.headers = headers;
-        TvFactory.config = config;
       }).error(function(data, status, headers, config){
-        TvFactory.data = data;
-        TvFactory.status = status;
-        TvFactory.headers = headers;
-        TvFactory.config = config;
+        console.log(data, status, headers, config);
       });
     };
 

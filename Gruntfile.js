@@ -7,7 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           open: true,
-          middleware: function (connect) {
+          middleware: function(connect) {
             return [
               connect.static('.tmp'),
               connect().use(
@@ -89,7 +89,7 @@ module.exports = function (grunt) {
       test: {
         options: {
           port: 9001,
-          middleware: function (connect) {
+          middleware: function(connect) {
             return [
               connect.static('.tmp'),
               connect.static('test'),
@@ -164,7 +164,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath:  /\.\.\//
+        ignorePath: /\.\.\//
       }
     },
 
@@ -204,7 +204,7 @@ module.exports = function (grunt) {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images']
       }
     },
 
@@ -390,7 +390,22 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
-    
+
+    // Configure stubby run in background
+    bgShell: {
+      _defaults: {
+        bg: true
+      },
+      stubsStart: {
+        cmd: 'stubby --data "test/stubs/config.json"'
+      },
+      done: function(err, stdout, stderr) {
+        console.log('--->',err)
+        console.log('--->',stdout)
+        console.log('--->',stderr)
+      }
+    },
+
     // Test protractor cucumber
     protractor: {
       options: {
@@ -401,7 +416,7 @@ module.exports = function (grunt) {
           // Arguments passed to the command
         }
       },
-      my_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
+      my_target: { // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
         options: {
           configFile: "protractor-conf.js", // Target-specific config file
           args: {} // Target-specific arguments
@@ -410,25 +425,11 @@ module.exports = function (grunt) {
     },
 
     // Run api server
-    express: {    
+    express: {
       dev: {
         options: {
           script: 'api/app.js'
         }
-      }
-    },
-
-    // Stubby configuration
-    stubby: {
-      stubsServer: {
-        options: {
-          stubs: 8882,
-          tls: 7443,
-          admin: 8889
-        },
-        files: [{
-          src: [ 'test/stubs/*.{json,yaml,js}' ]
-        }]
       }
     }
 
@@ -437,12 +438,12 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-cucumber');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-selenium-webdriver');
-  grunt.loadNpmTasks('grunt-stubby');
+  grunt.loadNpmTasks('grunt-bg-shell');
 
-  grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+  grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
-    }   
+    }
 
     grunt.task.run([
       'clean:server',
@@ -454,9 +455,9 @@ module.exports = function (grunt) {
       'express:dev',
       'watch'
     ]);
-  });  
+  });
 
-  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function(target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
   });
@@ -465,11 +466,11 @@ module.exports = function (grunt) {
     'selenium_start',
     'clean:server',
     'ngconstant:testing',
+    'bgShell:stubsStart',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
     'karma',
-    //'stubby',
     'protractor',
     'selenium_stop'
   ]);
