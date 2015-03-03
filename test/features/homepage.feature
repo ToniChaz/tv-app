@@ -11,3 +11,4 @@ Feature: Running Cucumber with Protractor
   Scenario: Loading tv shows
   	Given I go on "tvshows"
   	Then click the button "getShows"
+  	And all shows have title "h1"

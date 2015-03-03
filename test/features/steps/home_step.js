@@ -8,6 +8,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
 var expect = chai.expect;
+var assert = chai.assert;
 
 module.exports = function() {
 
@@ -36,11 +37,27 @@ module.exports = function() {
   });
 
   this.Then(/^click the button "([^"]*)"$/, function(arg1, callback) {
-      element(by.id(arg1)).click().then(function() {
-          element.all(by.repeater('item in tv.data')).then(function(elem) {
-            expect(elem).to.have.length(5);
-          }); 
-          callback();
+    element(by.id(arg1)).click().then(function() {
+      element.all(by.repeater('item in tv.data')).then(function(elem) {
+        expect(elem).to.have.length(5);
+        callback();
       });
+    });
+  });
+
+  this.Then(/^all shows have title "([^"]*)"$/, function(arg1, callback) {
+    var showsTitle = element.all(by.tagName(arg1)).map(function(elem, index) {
+      return {
+        index: index,
+        text: elem.getText()
+      };
+    }).then(function(showTitle) {
+      assert.strictEqual(showTitle[0].text, 'LOST');
+      assert.strictEqual(showTitle[1].text, 'The feature');
+      assert.strictEqual(showTitle[2].text, 'Breaking Bad');
+      assert.strictEqual(showTitle[3].text, 'Girls');
+      assert.strictEqual(showTitle[4].text, 'Homeland');
+      callback();
+    });
   });
 }

@@ -1,6 +1,6 @@
 {
-  "name": "testangular",
-  "version": "0.0.0",
+  "name": "tv-app",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
     "cors": "2.5.3",
@@ -42,9 +42,8 @@
     "mongoose": "3.6.11",
     "protractor": "~1.6.1",
     "time-grunt": "^0.3.1",
-    "stubby": "~0.2.11",
-    "grunt-stubby": "~0.1.4",
-    "grunt-bg-shell": "~2.3.1"
+    "grunt-bg-shell": "~2.3.1",
+    "grunt-wait": "~0.1.0"
   },
   "engines": {
     "node": ">=0.10.0"

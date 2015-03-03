@@ -1,5 +1,5 @@
 {
-  "name": "test-angular",
+  "name": "tv-app",
   "version": "0.0.1",
   "dependencies": {
     "angular": "^1.3.0",

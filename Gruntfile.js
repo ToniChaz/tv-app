@@ -394,15 +394,22 @@ module.exports = function(grunt) {
     // Configure stubby run in background
     bgShell: {
       _defaults: {
-        bg: true
+        bg: true,
       },
       stubsStart: {
         cmd: 'stubby --data "test/stubs/config.json"'
       },
-      done: function(err, stdout, stderr) {
-        console.log('--->',err)
-        console.log('--->',stdout)
-        console.log('--->',stderr)
+      stubsClean: {
+        cmd: 'fuser 7443/tcp -k' // Clean https ports when stubby stop
+      }
+    },
+
+    // Wait to stubby run
+    wait: {
+      default: {
+        options: {
+          delay: 2000
+        }
       }
     },
 
@@ -435,10 +442,11 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.loadNpmTasks('grunt-cucumber');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-selenium-webdriver');
+  grunt.loadNpmTasks('grunt-cucumber');
   grunt.loadNpmTasks('grunt-bg-shell');
+  grunt.loadNpmTasks('grunt-wait');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
     if (target === 'dist') {
@@ -465,14 +473,16 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'selenium_start',
     'clean:server',
-    'ngconstant:testing',
     'bgShell:stubsStart',
+    'wait',
+    'ngconstant:testing',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
     'karma',
     'protractor',
-    'selenium_stop'
+    'selenium_stop',
+    'bgShell:stubsClean'
   ]);
 
   grunt.registerTask('build', [
