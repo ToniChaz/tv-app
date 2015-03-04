@@ -5,6 +5,11 @@
 <p>
 <button type="button" id="addShows" class="btn btn-lg btn-primary" ng-click="addShows()">Add Tv Show <span class="glyphicon glyphicon-film"></span></button>
 </p>
+data = {{tv.data}}
+status = {{tv.status}}
+headers = {{tv.headers}}
+config = {{tv.config}}
+<div id="response"></div>
 <div ng-show="getShowsBox" ng-repeat="item in tv.data">
     <button type="button" class="btn btn-small btn-danger pull-right" ng-click="deleteShow(item._id, $index)">Delete <span class="glyphicon glyphicon-bin"></span></button>
     <h1>{{ item.title }}</h1>

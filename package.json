@@ -43,7 +43,8 @@
     "protractor": "~1.6.1",
     "time-grunt": "^0.3.1",
     "grunt-bg-shell": "~2.3.1",
-    "grunt-wait": "~0.1.0"
+    "grunt-wait": "~0.1.0",
+    "grunt-stubby": "~0.1.4"
   },
   "engines": {
     "node": ">=0.10.0"
