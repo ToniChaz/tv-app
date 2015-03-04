@@ -395,9 +395,12 @@ module.exports = function(grunt) {
     bgShell: {
       _defaults: {
         bg: true,
+        done: function(err, stdout, stderr){
+          console.log("----------->", err, stdout, stderr);
+        }
       },
       stubsStart: {
-        cmd: 'stubby --data "test/stubs/config.json"'
+        cmd: 'stubby -d "test/stubs/config.json"'
       },
       stubsClean: {
         cmd: 'fuser 7443/tcp -k' // Clean https ports when stubby stop

@@ -55,7 +55,7 @@ module.exports = function() {
       assert.strictEqual(showTitle[0].text, 'LOST');
       assert.strictEqual(showTitle[1].text, 'The feature');
       assert.strictEqual(showTitle[2].text, 'Breaking Bad');
-      assert.strictEqual(showTitle[3].text, 'Girls');
+      assert.strictEqual(showTitle[3].text, 'Intelligence');
       assert.strictEqual(showTitle[4].text, 'Homeland');
       callback();
     });
