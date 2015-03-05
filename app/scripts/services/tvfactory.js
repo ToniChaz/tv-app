@@ -13,33 +13,13 @@ angular.module('testAngularApp')
     var TvFactory = {};
 
     TvFactory.getShows = function() {
-      $.ajax('GET', 'caca').success(function(data, status, headers, config) {
-        TvFactory.data = data;
-        TvFactory.status = status;
-        TvFactory.headers = headers;
-        TvFactory.config = config;
-        document.getElementById('response').innerHTML = 'success';
-      }).error(function(data, status, headers, config) {
-        TvFactory.data = data;
-        TvFactory.status = status;
-        TvFactory.headers = headers;
-        TvFactory.config = config;
-        document.getElementById('response').innerHTML = 'fail';
-      });
-      /*$http.jsonp(
+      $http.get(
         ENV.apiEndpoint + '/tvshows'
       ).success(function(data, status, headers, config) {
         TvFactory.data = data;
-        TvFactory.status = status;
-        TvFactory.headers = headers;
-        TvFactory.config = config;
       }).error(function(data, status, headers, config) {
-        TvFactory.data = data;
-        TvFactory.status = status;
-        TvFactory.headers = headers;
-        TvFactory.config = config;
         console.log(data, status, headers, config);
-      });*/
+      });
     };
 
     TvFactory.addShows = function(show) {

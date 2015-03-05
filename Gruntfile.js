@@ -391,28 +391,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Configure stubby run in background
-    bgShell: {
-      _defaults: {
-        bg: true
-      },
-      stubsStart: {
-        cmd: 'stubby -d "test/stubs/config.json"'
-      },
-      stubsClean: {
-        cmd: 'fuser 7443/tcp -k' // Clean https ports when stubby stop
-      }
-    },
-
-    // Wait to stubby run
-    wait: {
-      default: {
-        options: {
-          delay: 2000
-        }
-      }
-    },
-
     // Test protractor cucumber
     protractor: {
       options: {
@@ -444,9 +422,9 @@ module.exports = function(grunt) {
     stubby: {
       stubsServer: {
         options: {
-          stubs: 8030,
-          tls: 8020,
-          admin: 8010,
+          stubs: 8882,
+          tls: 7443,
+          admin: 8889,
           relativeFilesPath: true
         },
         // note the array collection instead of an object
@@ -461,8 +439,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-selenium-webdriver');
   grunt.loadNpmTasks('grunt-cucumber');
-  grunt.loadNpmTasks('grunt-bg-shell');
-  grunt.loadNpmTasks('grunt-wait');
   grunt.loadNpmTasks('grunt-stubby');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
@@ -490,9 +466,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'selenium_start',
     'clean:server',
-    //'bgShell:stubsStart',
     'stubby',
-    //'wait',
     'ngconstant:testing',
     'concurrent:test',
     'autoprefixer',
@@ -500,7 +474,6 @@ module.exports = function(grunt) {
     'karma',
     'protractor',
     'selenium_stop'
-    //'bgShell:stubsClean'
   ]);
 
   grunt.registerTask('build', [

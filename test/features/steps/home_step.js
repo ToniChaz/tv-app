@@ -38,17 +38,11 @@ module.exports = function() {
 
   this.Then(/^click the button "([^"]*)"$/, function(arg1, callback) {
     element(by.id(arg1)).click().then(function() {
-      element.all().ptor_.getPageSource().then(function(response) {
-        console.log(response);
-        callback();
-      });
-    });
-    /*element(by.id(arg1)).click().then(function() {
       element.all(by.repeater('item in tv.data')).then(function(elem) {
         expect(elem).to.have.length(5);
         callback();
       });
-    });*/
+    });
   });
 
   this.Then(/^all shows have title "([^"]*)"$/, function(arg1, callback) {
