@@ -8,7 +8,6 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
 var expect = chai.expect;
-var assert = chai.assert;
 
 module.exports = function() {
 
@@ -52,11 +51,11 @@ module.exports = function() {
         text: elem.getText()
       };
     }).then(function(showTitle) {
-      assert.strictEqual(showTitle[0].text, 'LOST');
-      assert.strictEqual(showTitle[1].text, 'The feature');
-      assert.strictEqual(showTitle[2].text, 'Breaking Bad');
-      assert.strictEqual(showTitle[3].text, 'Intelligence');
-      assert.strictEqual(showTitle[4].text, 'Homeland');
+      expect(showTitle[0].text).to.equal('LOST');
+      expect(showTitle[1].text).to.equal('The feature');
+      expect(showTitle[2].text).to.equal('Breaking Bad');
+      expect(showTitle[3].text).to.equal('Intelligence');
+      expect(showTitle[4].text).to.equal('Homeland');
       callback();
     });
   });
