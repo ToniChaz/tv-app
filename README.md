@@ -39,16 +39,12 @@ $ bower update
 
 ### Run the app
 ```sh
-$ cd api/
-$ node app.js
-$ cd app/
+$ cd tv-app/
 $ grunt serve
 ```
 ### Run test front end
 ```sh
-$ cd app/
-$ sudo webdriver-manager update
-$ webdriver-manager start
+$ cd tv-app/
 $ grunt test
 ```
 ### Install globaly (for testing)
