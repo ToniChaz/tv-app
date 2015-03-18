@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('ENV', {name:'testing',apiEndpoint:'http://localhost:8882'})
+.constant('ENV', {name:'development',apiEndpoint:'http://localhost:3000'})
 
 ;

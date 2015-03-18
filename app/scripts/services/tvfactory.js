@@ -43,6 +43,17 @@ angular.module('testAngularApp')
       });
     };
 
+    TvFactory.updateShow = function(id, show, callback) {
+      $http.put(
+        ENV.apiEndpoint + '/tvshow/' + id,
+        show
+      ).success(function(data, status, headers, config) {
+        callback(data);
+      }).error(function(data, status, headers, config) {
+        console.log(data, status, headers, config);
+      });
+    };
+
     // Return factory
     return TvFactory;
 

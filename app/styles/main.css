@@ -23,7 +23,9 @@ body {
   line-height: 40px;
   padding-bottom: 19px;
 }
-
+.modal {
+  background: rgba(255,255,255, 0.7);
+}
 /* Custom page footer */
 .footer {
   padding-top: 19px;

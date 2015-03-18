@@ -1,3 +1,5 @@
+<ng-include src="'views/modal.html'"></ng-include>
+<ng-include src="'views/alert.html'"></ng-include>
 <p>This is the tv shows view.</p>
 <p>
 <button type="button" id="getShows" class="btn btn-lg btn-success" ng-click="getShows()">Get Tv Shows <span class="glyphicon glyphicon-film"></span></button>
@@ -6,7 +8,11 @@
 <button type="button" id="addShows" class="btn btn-lg btn-primary" ng-click="addShows()">Add Tv Show <span class="glyphicon glyphicon-film"></span></button>
 </p>
 <div ng-show="getShowsBox" ng-repeat="item in tv.data">
-    <button type="button" class="btn btn-small btn-danger pull-right" ng-click="deleteShow(item._id, $index)">Delete <span class="glyphicon glyphicon-bin"></span></button>
+    <hr>
+    <div class="btn-toolbar pull-right">
+        <button type="button" class="btn btn-small btn-danger pull-right" ng-click="deleteShow(item._id, $index)">Delete <span class="glyphicon glyphicon-trash"></span></button>
+        <button type="button" class="btn btn-small btn-warning pull-right" ng-click="updateShow(item)">Modify <span class="glyphicon glyphicon-pencil"></span></button>
+    </div>
     <h1>{{ item.title }}</h1>
     <img ng-src="{{ item.poster }}" alt="{{ item.title }}" />
     <p>Year: {{ item.year }}</p>

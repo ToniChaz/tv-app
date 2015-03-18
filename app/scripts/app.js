@@ -12,7 +12,8 @@ angular
   .module('testAngularApp', [
     'ngResource',
     'ngRoute',
-    'config'
+    'config',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -1,5 +1,5 @@
 {
-  "name": "tv-app",
+  "name": "testAngular",
   "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
@@ -50,6 +50,6 @@
   "scripts": {
     "test": "grunt test",
     "install": "bower update",
-    "install": "node ./node_modules/protractor/bin/webdriver-manager update",
+    "install": "node ./node_modules/protractor/bin/webdriver-manager update"
   }
 }
