@@ -26,8 +26,10 @@ angular.module('testAngularApp')
     }
 
     $scope.deleteShow = function(id, index) {
-      $scope.tv.deleteShow(id, function() {
-        TvFactory.data.splice(index, 1);
+      $scope.tv.deleteShow(id, function(response) {
+        if (response.status === 'deleted') {
+          TvFactory.data.splice(index, 1);
+        };        
       });
     }
 
@@ -45,7 +47,15 @@ angular.module('testAngularApp')
     }
 
     $scope.submit = function(show) {
-      $scope.tv.addShows(show);
+      $scope.tv.addShows(show, function(response) {
+        if (response.status === 'added') {
+          var data = {
+            type: 'success',
+            msg: 'Well done! Your show has added successfully!'
+          }
+          $rootScope.$emit('ALERT', data);
+        };
+      });
       $scope.show = null
     }
 

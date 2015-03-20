@@ -20,10 +20,10 @@ module.exports = function(app) {
   findById = function(req, res) {
   	TVShow.findById(req.params.id, function(err, tvshow) {
   		if(!err) {
+        res.send(tvshow);
         console.log('GET /tvshow/' + req.params.id);
-  			res.send(tvshow);
   		} else {
-        res.status(400).json({ error: err })
+        res.status(400).json({ error: err });
   			console.log('ERROR: ' + err);
   		}
   	});
@@ -46,10 +46,13 @@ module.exports = function(app) {
 
   	tvshow.save(function(err) {
   		if(!err) {
-        res.send(tvshow);
-  			console.log('Created');
+        res.status(200).json({ 
+          status: 'added',
+          tvshow: tvshow
+        });
+  			console.log('Added');
       } else {
-        res.status(400).json({ error: err })
+        res.status(400).json({ error: err });
         console.log('ERROR: ' + err);
       }
     });
@@ -69,10 +72,10 @@ module.exports = function(app) {
 
   		tvshow.save(function(err) {
   			if(!err) {
-          res.status(200).json({ status: 'updated' })
+          res.status(200).json({ status: 'updated' });
   				console.log('Updated');
   			} else {
-          res.status(400).json({ error: err })
+          res.status(400).json({ error: err });
   				console.log('ERROR: ' + err);
   			}
   			res.send(tvshow);
@@ -85,10 +88,10 @@ module.exports = function(app) {
   	TVShow.findById(req.params.id, function(err, tvshow) {
   		tvshow.remove(function(err) {
   			if(!err) {
-          res.status(200).json({ status: 'deleted' })
-  				console.log('Removed');
+          res.status(200).json({ status: 'deleted' });
+  				console.log('Deleted');
   			} else {
-          res.status(400).json({ error: err })
+          res.status(400).json({ error: err });
   				console.log('ERROR: ' + err);
   			}
   		})
