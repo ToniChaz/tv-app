@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('ENV', {name:'testing',apiEndpoint:'http://localhost:8882'})
+.constant('ENV', {name:'production',apiEndpoint:'https://tv-api-tonichaz.c9.io'})
 
 ;
