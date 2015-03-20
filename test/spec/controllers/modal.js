@@ -3,7 +3,7 @@
 describe('Controller: ModalCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('tvAppApp'));
+  beforeEach(module('testAngularApp'));
 
   var ModalCtrl,
     scope;

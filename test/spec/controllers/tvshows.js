@@ -8,8 +8,7 @@ describe('Controller: TvshowsCtrl', function () {
   var TvshowsCtrl,
       scope,
       httpBackend,
-      defaultJSON,
-      TvFactory;    
+      defaultJSON;    
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $httpBackend, _defaultJSON_) {
@@ -37,7 +36,7 @@ describe('Controller: TvshowsCtrl', function () {
     httpBackend.when('GET', '/tvshows').respond(defaultJSON);
     expect(defaultJSON.data[0].title).toEqual(jasmine.any(String));
     expect(defaultJSON.data[0].year).toEqual(jasmine.any(Number));
-    expect(defaultJSON.data[0].poster).toMatch('http://')
+    expect(defaultJSON.data[0].poster).toMatch('http://');
     expect(defaultJSON.data[0].summary).toEqual(jasmine.any(String));
     expect(defaultJSON.data[0].genre).toEqual(jasmine.any(String));
   });

@@ -2,13 +2,19 @@
 
 /**
  * @ngdoc function
- * @name tvAppApp.controller:ModalCtrl
+ * @name testAngularApp.controller:ModalCtrl
  * @description
  * # ModalCtrl
- * Controller of the tvAppApp
+ * Controller of the testAngularApp
  */
 angular.module('testAngularApp')
   .controller('ModalCtrl', function($scope, $rootScope, $modal, $log) {
+    $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
+    
     $scope.show = {};
     $scope.callback = function(){};
 

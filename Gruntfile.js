@@ -357,12 +357,12 @@ module.exports = function(grunt) {
       },
       production: {
         options: {
-          dest: '<%= yeoman.dist %>/scripts/config.js'
+          dest: '<%= yeoman.app %>/scripts/config.js'
         },
         constants: {
           ENV: {
             name: 'production',
-            apiEndpoint: 'http://api.livesite.com'
+            apiEndpoint: 'https://tv-api-tonichaz.c9.io'
           }
         }
       }
@@ -466,8 +466,8 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'selenium_start',
     'clean:server',
-    'stubby',
     'ngconstant:testing',
+    'stubby',
     'concurrent:test',
     'autoprefixer',
     'connect:test',

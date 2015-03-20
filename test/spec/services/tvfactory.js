@@ -12,7 +12,7 @@ describe('Service: TvFactory', function () {
     TvFactory = _TvFactory_;
   }));
 
-  it('should have an getShows function', function () {    
+  it('should have an shows functions', function () {    
     expect(angular.isFunction(TvFactory.getShows)).toBe(true);
     expect(angular.isFunction(TvFactory.addShows)).toBe(true);
     expect(angular.isFunction(TvFactory.deleteShow)).toBe(true);
