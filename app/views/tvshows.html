@@ -1,12 +1,12 @@
 <ng-include src="'views/modal.html'"></ng-include>
 <ng-include src="'views/alert.html'"></ng-include>
 <p>This is the tv shows view.</p>
-<p>
-<button type="button" id="getShows" class="btn btn-lg btn-success" ng-click="getShows()">Get Tv Shows <span class="glyphicon glyphicon-film"></span></button>
-</p>
-<p>
-<button type="button" id="addShows" class="btn btn-lg btn-primary" ng-click="addShows()">Add Tv Show <span class="glyphicon glyphicon-film"></span></button>
-</p>
+<div class="btn-toolbar">
+    <p>
+    <button type="button" id="getShows" class="btn btn-lg btn-success" ng-click="getShows()">Get Tv Shows <span class="glyphicon glyphicon-film"></span></button>
+    <button type="button" id="addShows" class="btn btn-lg btn-primary" ng-click="addShows()">Add Tv Show <span class="glyphicon glyphicon-film"></span></button>
+    </p>
+</div>
 <div ng-show="getShowsBox" ng-repeat="item in tv.data">
     <hr>
     <div class="btn-toolbar pull-right">
