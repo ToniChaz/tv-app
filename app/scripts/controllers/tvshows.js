@@ -20,8 +20,10 @@ angular.module('testAngularApp')
     $scope.tv.getShows();
 
     $scope.deleteShow = function(id, index) {
-      $scope.tv.deleteShow(id, function() {
-        TvFactory.data.splice(index, 1);
+      $scope.tv.deleteShow(id, function(response) {
+        if (response.status === 'deleted') {
+          TvFactory.data.splice(index, 1);
+        };        
       });
     }
 

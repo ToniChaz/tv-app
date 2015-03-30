@@ -22,12 +22,12 @@ angular.module('testAngularApp')
       });
     };
 
-    TvFactory.addShows = function(show) {
+    TvFactory.addShows = function(show, callback) {
       $http.post(
         ENV.apiEndpoint + '/tvshow',
         show
       ).success(function(data, status, headers, config) {
-        console.log(data, status, headers, config);
+        callback(data);
       }).error(function(data, status, headers, config) {
         console.log(data, status, headers, config);
       });
@@ -37,7 +37,7 @@ angular.module('testAngularApp')
       $http.delete(
         ENV.apiEndpoint + '/tvshow/' + id
       ).success(function(data, status, headers, config) {
-        callback();
+        callback(data);
       }).error(function(data, status, headers, config) {
         console.log(data, status, headers, config);
       });

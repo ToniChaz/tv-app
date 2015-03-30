@@ -33,8 +33,6 @@ angular.module('testAngularApp')
 
       modalInstance.result.then(function(show) {
         $scope.callback(show);
-      }, function() {
-        $log.info('Modal dismissed at: ' + new Date());
       });
     });
 
