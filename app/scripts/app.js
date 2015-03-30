@@ -12,6 +12,7 @@ angular
   .module('testAngularApp', [
     'ngResource',
     'ngRoute',
+    'ngAnimate',
     'config',
     'ui.bootstrap'
   ])
@@ -24,6 +25,10 @@ angular
       .when('/tvshows', {
         templateUrl: 'views/tvshows.html',
         controller: 'TvshowsCtrl'
+      })
+      .when('/addshow', {
+        templateUrl: 'views/addshow.html',
+        controller: 'AddshowCtrl'
       })
       .when('/contact', {
         templateUrl: 'views/contact.html',
