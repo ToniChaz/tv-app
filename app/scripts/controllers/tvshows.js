@@ -8,7 +8,7 @@
  * Controller of the testAngularApp
  */
 angular.module('testAngularApp')
-  .controller('TvshowsCtrl', function($scope, $rootScope, TvFactory) {
+  .controller('TvshowsCtrl', function($scope, $rootScope, $filter, TvFactory) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -18,6 +18,8 @@ angular.module('testAngularApp')
     $scope.tv = TvFactory;
 
     $scope.tv.getShows();
+
+    var orderBy = $filter('orderBy');
 
     $scope.deleteShow = function(id, index) {
       $scope.tv.deleteShow(id, function(response) {
@@ -34,6 +36,10 @@ angular.module('testAngularApp')
       };
       $rootScope.$emit('MODAL', data)
     }
+
+    $scope.order = function(predicate, reverse) {
+      $scope.tv.data = orderBy($scope.tv.data, predicate, reverse);
+    };
 
     function onUpdateShow(show) {
       $scope.tv.updateShow(show._id, show, function(response) {

@@ -10,6 +10,14 @@
       </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+  <span>Order by</span>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" ng-click="reverse=!reverse;order('title',reverse)" class="btn btn-default">Title</button>
+        <button type="button" ng-click="reverse=!reverse;order('year',reverse)" class="btn btn-default">Year</button>
+        <button type="button" ng-click="reverse=!reverse;order('seasons',reverse)" class="btn btn-default">Seasons</button>
+      </div>
+    </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 <div class="list-group top-buffer">
     <div class="show animate-repeat list-group-item" ng-repeat="item in tv.data | filter:query as results">
