@@ -16,14 +16,14 @@ angular.module('testAngularApp')
     ];
 
     $scope.tv = TvFactory;
-    
+
     $scope.tv.getShows();
 
     $scope.deleteShow = function(id, index) {
       $scope.tv.deleteShow(id, function(response) {
         if (response.status === 'deleted') {
           TvFactory.data.splice(index, 1);
-        };        
+        };
       });
     }
 
@@ -43,7 +43,13 @@ angular.module('testAngularApp')
             msg: 'Well done! Your show has updated successfully!'
           }
           $rootScope.$emit('ALERT', data);
-        };
+        } else {
+          var data = {
+            type: 'success',
+            msg: 'Oh snap! Something has gone wrong!'
+          }
+          $rootScope.$emit('ALERT', data);
+        };;
       });
     }
 

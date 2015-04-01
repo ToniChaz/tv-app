@@ -12,7 +12,7 @@
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 <div class="list-group top-buffer">
-    <div class="animate-repeat list-group-item" ng-repeat="item in tv.data | filter:query as results">
+    <div class="show animate-repeat list-group-item" ng-repeat="item in tv.data | filter:query as results">
         <div class="btn-toolbar pull-right">
             <button type="button" class="btn btn-small btn-danger pull-right" ng-click="deleteShow(item._id, $index)">Delete <span class="glyphicon glyphicon-trash"></span></button>
             <button type="button" class="btn btn-small btn-warning pull-right" ng-click="updateShow(item)">Modify <span class="glyphicon glyphicon-pencil"></span></button>

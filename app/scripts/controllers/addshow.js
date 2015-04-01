@@ -8,7 +8,7 @@
  * Controller of the testAngularApp
  */
 angular.module('testAngularApp')
-  .controller('AddshowCtrl', function ($scope, TvFactory) {
+  .controller('AddshowCtrl', function($scope, $rootScope, TvFactory) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -25,9 +25,15 @@ angular.module('testAngularApp')
             msg: 'Well done! Your show has added successfully!'
           }
           $rootScope.$emit('ALERT', data);
+        } else {
+          var data = {
+            type: 'success',
+            msg: 'Oh snap! Something has gone wrong!'
+          }
+          $rootScope.$emit('ALERT', data);
         };
       });
       $scope.show = null
     }
-    
+
   });
