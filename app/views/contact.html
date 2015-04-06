@@ -1,1 +1,22 @@
 <p>This is the contact view.</p>
+<p>Send me your e-mail</p>
+<div class="row">
+  <div class="col-lg-12">
+  	<form name="emailForm" novalidate>
+	    <div class="input-group">	     
+	      <input type="email" class="form-control" placeholder="me.email@domain.com" ng-model="email" required>
+	      <span class="input-group-btn">
+	        <button class="btn btn-success" ng-disabled="emailForm.$invalid" ng-click="submit()" type="button">Send!</button>
+	      </span>
+	    </div><!-- /input-group -->
+    </form>    
+  </div><!-- /.col-lg-6 -->
+</div>
+<hr>
+<div class="row">
+  <div class="col-lg-12">
+  	<ul class="list-group">
+	  <li class="list-group-item" ng-repeat="item in contact.data">{{item.email}}</li>
+	</ul>
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->

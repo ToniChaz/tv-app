@@ -17,7 +17,8 @@ angular.module('testAngularApp')
 
     $scope.tv = TvFactory;
 
-    $scope.submit = function(show) {
+    $scope.submit = function() {
+      var show = $scope.show;
       $scope.tv.addShows(show, function(response) {
         if (response.status === 'added') {
           var data = {
