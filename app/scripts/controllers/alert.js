@@ -14,6 +14,7 @@ angular.module('testAngularApp')
       'AngularJS',
       'Karma'
     ];
+    
     $scope.alerts = [];
 
     $scope.addAlert = function(data) {

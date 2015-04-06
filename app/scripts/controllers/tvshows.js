@@ -34,7 +34,9 @@ angular.module('testAngularApp')
         show: show,
         callback: onUpdateShow
       };
-      $rootScope.$emit('MODAL', data)
+
+      $rootScope.$emit('MODAL', data);
+
     }
 
     $scope.order = function(predicate, reverse) {
