@@ -329,7 +329,7 @@ module.exports = function(grunt) {
     ngconstant: {
       // Options for all targets
       options: {
-        wrap: '"use strict";\n\n {%= __ngModule %}',
+        wrap: '\'use strict\';\n\n {%= __ngModule %}',
         name: 'config',
       },
       // Environment targets
@@ -394,16 +394,16 @@ module.exports = function(grunt) {
     // Test protractor cucumber
     protractor: {
       options: {
-        configFile: "node_modules/protractor/referenceConf.js", // Default config file
+        configFile: 'node_modules/protractor/referenceConf.js', // Default config file
         keepAlive: true, // If false, the grunt process stops when the test fails.
         noColor: false, // If true, protractor will not use colors in its output.
         args: {
           // Arguments passed to the command
         }
       },
-      my_target: { // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
+      myTarget: { // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
         options: {
-          configFile: "protractor-conf.js", // Target-specific config file
+          configFile: 'protractor-conf.js', // Target-specific config file
           args: {} // Target-specific arguments
         }
       },

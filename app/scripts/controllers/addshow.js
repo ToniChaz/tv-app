@@ -8,7 +8,7 @@
  * Controller of the testAngularApp
  */
 angular.module('testAngularApp')
-  .controller('AddshowCtrl', function($scope, $rootScope, TvFactory) {
+  .controller('AddshowCtrl', function($scope, TvFactory) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -18,23 +18,30 @@ angular.module('testAngularApp')
     $scope.tv = TvFactory;
 
     $scope.submit = function() {
+
       var show = $scope.show;
+
       $scope.tv.addShows(show, function(response) {
+
+        var data;
+
         if (response.status === 'added') {
-          var data = {
+          data = {
             type: 'success',
             msg: 'Well done! Your show has added successfully!'
-          }
-          $rootScope.$emit('ALERT', data);
+          };
         } else {
-          var data = {
+          data = {
             type: 'success',
             msg: 'Oh snap! Something has gone wrong!'
-          }
-          $rootScope.$emit('ALERT', data);
-        };
+          };
+        }
+
+        $scope.$broadcast('ALERT', data);
+
       });
-      $scope.show = null
-    }
+
+      $scope.show = null;
+    };
 
   });

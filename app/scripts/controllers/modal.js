@@ -8,7 +8,7 @@
  * Controller of the testAngularApp
  */
 angular.module('testAngularApp')
-  .controller('ModalCtrl', function($scope, $rootScope, $modal, $log) {
+  .controller('ModalCtrl', function($scope, $modal) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -18,7 +18,7 @@ angular.module('testAngularApp')
     $scope.show = {};
     $scope.callback = function(){};
 
-    $rootScope.$on('MODAL', function(event, data) {
+    $scope.$on('MODAL', function(event, data) {
       $scope.show = data.show;
       $scope.callback = data.callback;
       var modalInstance = $modal.open({

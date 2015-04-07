@@ -22,7 +22,7 @@ angular.module('testAngularApp')
     		$scope.contact.getEmail();
     		$scope.email = '';
     	});
-    }
+    };
 
   });
  

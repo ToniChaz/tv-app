@@ -8,7 +8,7 @@
  * Controller of the testAngularApp
  */
 angular.module('testAngularApp')
-  .controller('AlertCtrl', function($scope, $rootScope) {
+  .controller('AlertCtrl', function($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -28,7 +28,7 @@ angular.module('testAngularApp')
       $scope.alerts.splice(index, 1);
     };
 
-    $rootScope.$on('ALERT', function(event, data){
+    $scope.$on('ALERT', function(event, data){
     	$scope.addAlert(data);
     });
 

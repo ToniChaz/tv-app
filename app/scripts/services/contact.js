@@ -8,7 +8,7 @@
  * Factory in the testAngularApp.
  */
 angular.module('testAngularApp')
-  .factory('Contact', function($http, ENV) {
+  .factory('Contact', function($http, $log, ENV) {
 
     var Contact = {};
 
@@ -16,20 +16,42 @@ angular.module('testAngularApp')
       $http.get(
         ENV.apiEndpoint + '/email'
       ).success(function(data, status, headers, config) {
-        Contact.data = data;
+        var result = [];
+        result.push(data);
+        result.push(status);
+        result.push(headers);
+        result.push(config);
+        $log.log(result);
+        Contact.data = result[0];
       }).error(function(data, status, headers, config) {
-        console.log(data, status, headers, config);
+        var result = [];
+        result.push(data);
+        result.push(status);
+        result.push(headers);
+        result.push(config);
+        $log.log(result);
       });
     };
 
     Contact.addEmail = function(email, callback) {
       $http.post(
         ENV.apiEndpoint + '/email', 
-        { "email": email }
+        { 'email': email }
       ).success(function(data, status, headers, config) {
+        var result = [];
+        result.push(data);
+        result.push(status);
+        result.push(headers);
+        result.push(config);
+        $log.log(result);
         callback();
       }).error(function(data, status, headers, config) {
-        console.log(data, status, headers, config);
+        var result = [];
+        result.push(data);
+        result.push(status);
+        result.push(headers);
+        result.push(config);
+        $log.log(result);
       });
     };
 

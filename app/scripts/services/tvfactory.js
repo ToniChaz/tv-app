@@ -8,17 +8,22 @@
  * Factory in the testAngularApp.
  */
 angular.module('testAngularApp')
-  .factory('TvFactory', function($http, ENV) {
+  .factory('TvFactory', function($http, $log, ENV) {
 
     var TvFactory = {};
 
     TvFactory.getShows = function() {
       $http.get(
         ENV.apiEndpoint + '/tvshows'
-      ).success(function(data, status, headers, config) {
+      ).success(function(data) {        
         TvFactory.data = data;
       }).error(function(data, status, headers, config) {
-        console.log(data, status, headers, config);
+        var result = [];
+        result.push(data);
+        result.push(status);
+        result.push(headers);
+        result.push(config);
+        $log.log(result);
       });
     };
 
@@ -26,20 +31,30 @@ angular.module('testAngularApp')
       $http.post(
         ENV.apiEndpoint + '/tvshow',
         show
-      ).success(function(data, status, headers, config) {
+      ).success(function(data) {
         callback(data);
       }).error(function(data, status, headers, config) {
-        console.log(data, status, headers, config);
+        var result = [];
+        result.push(data);
+        result.push(status);
+        result.push(headers);
+        result.push(config);
+        $log.log(result);
       });
     };
 
     TvFactory.deleteShow = function(id, callback) {
       $http.delete(
         ENV.apiEndpoint + '/tvshow/' + id
-      ).success(function(data, status, headers, config) {
+      ).success(function(data) {
         callback(data);
       }).error(function(data, status, headers, config) {
-        console.log(data, status, headers, config);
+        var result = [];
+        result.push(data);
+        result.push(status);
+        result.push(headers);
+        result.push(config);
+        $log.log(result);
       });
     };
 
@@ -47,10 +62,15 @@ angular.module('testAngularApp')
       $http.put(
         ENV.apiEndpoint + '/tvshow/' + id,
         show
-      ).success(function(data, status, headers, config) {
+      ).success(function(data) {
         callback(data);
       }).error(function(data, status, headers, config) {
-        console.log(data, status, headers, config);
+        var result = [];
+        result.push(data);
+        result.push(status);
+        result.push(headers);
+        result.push(config);
+        $log.log(result);
       });
     };
 
